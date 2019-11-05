@@ -5,7 +5,7 @@ bl_info = {
 
 import bpy
 import os
-#import ffmpy
+import ffmpy
 import sys
 from bpy.app.handlers import persistent
 
