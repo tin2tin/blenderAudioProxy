@@ -5,7 +5,7 @@ bl_info = {
 
 import bpy
 import os
-import ffmpy
+#import ffmpy
 import sys
 from bpy.app.handlers import persistent
 
@@ -14,8 +14,8 @@ class AudioProxyAddonPreferences(bpy.types.AddonPreferences):
     '''Preferences to store proxy file path and format'''
     bl_idname = __name__
 
-    output_path = bpy.props.StringProperty(name="Path", subtype="FILE_PATH", default="//BL_proxy/audio")
-    output_format = bpy.props.StringProperty(name="Format", default="ogg")
+    output_path: bpy.props.StringProperty(name="Path", subtype="FILE_PATH", default="//BL_proxy/audio")
+    output_format: bpy.props.StringProperty(name="Format", default="ogg")
 
     def draw(self, context):
         layout = self.layout
@@ -26,8 +26,8 @@ class AudioProxyAddonPreferences(bpy.types.AddonPreferences):
 
 
 class AudioProxySequenceProperties(bpy.types.PropertyGroup):
-    path_original = bpy.props.StringProperty(name="Original Path", subtype="FILE_PATH")
-    path_proxy = bpy.props.StringProperty(name="Proxy Path", subtype="FILE_PATH")
+    path_original: bpy.props.StringProperty(name="Original Path", subtype="FILE_PATH")
+    path_proxy: bpy.props.StringProperty(name="Proxy Path", subtype="FILE_PATH")
 
 
 class AudioProxyUseOrig(bpy.types.Operator):
@@ -65,7 +65,7 @@ class AudioProxyCreate(bpy.types.Operator):
     bl_idname = "audio_proxy.create"
     bl_label = "Create Audio Proxies"
     bl_options = {'REGISTER'}
-    user_preferences = bpy.context.user_preferences
+    user_preferences = bpy.context.preferences
 
     def execute(self, context):
         scene = context.scene
@@ -149,4 +149,3 @@ def unregister():
 
 if __name__ == "__main__":
     register()
-
